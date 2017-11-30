@@ -1,7 +1,8 @@
 import json
 import csv
-import datetime
+from datetime import datetime
 from elasticsearch2 import Elasticsearch
+from dateutil.relativedelta import relativedelta
 
 try:
     es = Elasticsearch(hosts='url', http_auth=('login', 'pass'), port=9200, timeout = 600)
@@ -9,13 +10,13 @@ try:
 except Exception as ex:
     print('Error:', ex)
 
-now = datetime.datetime.now()
-
 def get_index(index, period, delta):
     if str(period).upper() == 'D':
-        return index + '' + '-' + str(now.year) + '.' + str(now.month) + '.' + str(now.day-int(delta))
+        date = datetime.now() + relativedelta(days=-int(delta))
+        return '{}-{:%Y.%m.%d}'.format(index,date)
     else:
-        return index + '' + '-' + str(now.year) + '.' + str(now.month-int(delta))
+        date = datetime.now() + relativedelta(months=-int(delta))
+        return '{}-{:%Y.%m}'.format(index, date)
 
 
 with open('./config/load_config.csv') as csvfile:

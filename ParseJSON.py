@@ -1,7 +1,8 @@
 import json
 import pandas as pd
 import csv
-from datetime import datetime, timedelta
+from datetime import datetime
+from dateutil.relativedelta import relativedelta
 
 with open('./config/parse_config.csv') as csvfile:
     parse_config = csv.reader(csvfile, delimiter=',')
@@ -9,11 +10,11 @@ with open('./config/parse_config.csv') as csvfile:
 
         # Load data from json file
         if str(config[2]).upper() == 'D':
-            date = datetime.now() - timedelta(days=int(config[1]))
-            file_path = '{}{}-{:%Y.%m.%d}.json'.format(config[3],config[0],date)
+            date = datetime.now() + relativedelta(days=-int(config[1]))
+            file_path = '{}{}-{:%Y.%m.%d}.json'.format(config[3], config[0], date)
         else:
-            date = datetime.now() - timedelta((365/12)*int(config[1]))
-            file_path = '{}{}-{:%Y.%m}.json'.format(config[3],config[0],date)
+            date = datetime.now() + relativedelta(months=-int(config[1]))
+            file_path = '{}{}-{:%Y.%m}.json'.format(config[3], config[0], date)
 
         with open(file_path, encoding='utf8') as file:
             data_load = json.load(file)
