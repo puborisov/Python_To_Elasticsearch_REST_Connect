@@ -1,0 +1,12 @@
+metrics-hpalm-run,0,m,./data/in/metrics-hpalm-run/
+metrics-sonarbeat,0,m,./data/in/metrics-sonarbeat/
+metrics-jenkins,0,d,./data/in/metrics-jenkins/
+metrics-jenkinsqa,0,d,./data/in/metrics-jenkinsqa/
+metrics-jenkinscdp,0,d,./data/in/metrics-jenkinscdp/
+metrics-bitbucket,0,d,./data/in/metrics-bitbucket/
+metrics-nexus,0,d,./data/in/metrics-nexus/
+metrics-jenkins,1,d,./data/in/metrics-jenkins/
+metrics-jenkinsqa,1,d,./data/in/metrics-jenkinsqa/
+metrics-jenkinscdp,1,d,./data/in/metrics-jenkinscdp/
+metrics-bitbucket,1,d,./data/in/metrics-bitbucket/
+metrics-nexus,1,d,./data/in/metrics-nexus/
